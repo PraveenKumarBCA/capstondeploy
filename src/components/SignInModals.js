@@ -11,6 +11,7 @@ const SignInModal=({Wheycart})=>{
     let [WheyCartItem,SetWheyCartItem]=useState([])
     let LoginLoadingBox=useRef()
     let [showPassword,SetshowPassword]=useState(false)
+    let [adminSIginBox,SetadminSigninBox]=useState(false)
 
     let [NewUser,SetNewUser]=useState({
         UserName:"",
@@ -112,12 +113,16 @@ const SignInModal=({Wheycart})=>{
             DumbbellLoadingBox.classList.remove("login-loading-box-show")
             ShowToastMeessege(Success,undefined)
             sessionStorage.setItem("AdminId",data.id)
+            SetadminSigninBox(true)
+            // setTimeout(()=>{
+            //     window.location.reload()
+            // },3500)
             setTimeout(()=>{
-                Navigate(`/admin/${data.id}`)
-                window.location.reload()
+                // Navigate(`/admin/${data.id}`)
+                window.location.replace(`/admin/${data.id}`)
 
 
-            },3500)
+            },4000)
             
         }
         else {
